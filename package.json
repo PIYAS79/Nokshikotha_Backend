@@ -17,7 +17,8 @@
     "express": "^4.21.1",
     "http-status-codes": "^2.3.0",
     "mongoose": "^8.7.2",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
