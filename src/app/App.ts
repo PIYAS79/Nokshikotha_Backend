@@ -2,13 +2,17 @@ import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import httpStatus from 'http-status-codes'
 import Global_Error_Handler from './errors/Global_Error_Handler';
+import { Project_Final_Routes } from './routes';
 
 const app = express();
 
-// middlewares ---------------------
+// middlewares
 app.use(express.json());
 app.use(cors())
 
+
+// Project Routes
+app.use('/app/v1', Project_Final_Routes);
 
 
 // initial route fo the project
@@ -20,7 +24,6 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 
-
 // route not found error
 app.use("*", (req: Request, res: Response, next: NextFunction) => {
     res.status(httpStatus.NOT_FOUND).json({
@@ -28,6 +31,7 @@ app.use("*", (req: Request, res: Response, next: NextFunction) => {
         message: "Route not found *"
     })
 })
+
 
 // global error handler route 
 app.use(Global_Error_Handler);
