@@ -1,12 +1,14 @@
+import Final_App_Error from "../../errors/Final_App_Error";
 import { Create_Package_Type, Package_Type } from "./package.interface";
 import { Package_Model } from "./package.model";
+import httpStatus from 'http-status-codes';
 
 
 
 // create package service
 const Create_Package_Service = async (gettedData: Create_Package_Type) => {
 
-    const recentPackage = await Package_Model.find().sort({createdAt:-1});
+    const recentPackage = await Package_Model.find().sort({ createdAt: -1 });
     const newPackage: Package_Type = {
         package_name: gettedData.package_name,
         package_price: gettedData.package_price,
@@ -20,6 +22,11 @@ const Create_Package_Service = async (gettedData: Create_Package_Type) => {
 
 // update package service 
 const Update_Package_Service = async (gettedData: Partial<Create_Package_Type>, pid: string) => {
+
+    const existingPackage = await Package_Model.findById({ _id: pid }) as Package_Type;
+    if (!existingPackage) {
+        throw new Final_App_Error(httpStatus.NOT_FOUND, "Package Not Found *");
+    }
 
     const remainingProperties: Record<string, unknown> = { ...gettedData };
     const result = await Package_Model.findByIdAndUpdate({ _id: pid }, remainingProperties, { new: true })
@@ -37,6 +44,11 @@ const Get_All_Package_Service = async () => {
 
 // delete package service 
 const Delete_Package_Service = async (pid: string) => {
+
+    const existingPackage = await Package_Model.findById({ _id: pid }) as Package_Type;
+    if (!existingPackage) {
+        throw new Final_App_Error(httpStatus.NOT_FOUND, "Package Not Found *");
+    }
 
     const result = await Package_Model.findByIdAndDelete({ _id: pid });
     return result;
