@@ -14,4 +14,7 @@ router.post('/', Zod_Validation_Request(Zod_Create_OrderStack_Type), OrderStack_
 // update order status api
 router.patch('/update/:oid', Zod_Validation_Request(Zod_Update_OrderStatus_Type), OrderStack_Controller.Update_Order_Status_Contorller);
 
+// get all order api
+router.get('/',OrderStack_Controller.Get_All_Order_Controller);
+
 export const OrderStack_Routes = router;

@@ -60,11 +60,17 @@ const Update_Order_Status_Service = async (gettedData: Update_Order_Status_Type,
     return result;
 }
 
+// get all order service 
+const Get_All_Order_Service = async () => {
+    const result = await OrderStack_Model.find();
+    return result;
+}
 
 
 
 export const OrderStack_Services = {
     Create_OrderStack_Service,
     Update_Order_Status_Service,
-
+    Get_All_Order_Service,
+    
 }

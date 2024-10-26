@@ -17,7 +17,7 @@ const Create_OrderStack_Controller = Async_Catch(async (req: Request, res: Respo
 
 // update order status controller 
 const Update_Order_Status_Contorller = Async_Catch(async (req: Request, res: Response, next: NextFunction) => {
-    const result = await OrderStack_Services.Update_Order_Status_Service(req.body,req.params.oid);
+    const result = await OrderStack_Services.Update_Order_Status_Service(req.body, req.params.oid);
 
     res.status(httpStatus.OK).json({
         success: true,
@@ -26,8 +26,20 @@ const Update_Order_Status_Contorller = Async_Catch(async (req: Request, res: Res
     })
 })
 
+// get all order controller 
+const Get_All_Order_Controller = Async_Catch(async (req: Request, res: Response, next: NextFunction) => {
+    const result = await OrderStack_Services.Get_All_Order_Service();
+
+    res.status(httpStatus.OK).json({
+        success: true,
+        message: "Successfully get all order",
+        data: result
+    })
+})
+
 export const OrderStack_Controller = {
     Create_OrderStack_Controller,
     Update_Order_Status_Contorller,
+    Get_All_Order_Controller,
 
 }
