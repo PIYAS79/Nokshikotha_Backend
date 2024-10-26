@@ -11,7 +11,10 @@ const router = express.Router();
 router.post('/', Zod_Validation_Request(Zod_Create_Banner_Type), Banner_Controller.Create_Banner_Controller);
 
 // delete a banner api
-router.patch('/:bid',Banner_Controller.Delete_Banner_Controller);
+router.delete('/:bid', Banner_Controller.Delete_Banner_Controller);
+
+// get all banners api
+router.get('/', Banner_Controller.Get_All_Banner_Controller);
 
 
 export const Banner_Routes = router;
