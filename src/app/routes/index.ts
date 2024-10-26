@@ -2,6 +2,7 @@
 import express from 'express';
 import { Package_Router } from '../modules/Package/package.route';
 import { Banner_Routes } from '../modules/Banner/banner.route';
+import { Admin_Routes } from '../modules/Admin/admin.route';
 
 const router = express.Router();
 
@@ -14,6 +15,10 @@ const Project_Routes = [
     {
         path: '/banner',
         route: Banner_Routes
+    },
+    {
+        path: '/admin',
+        route: Admin_Routes
     }
 ]
 
