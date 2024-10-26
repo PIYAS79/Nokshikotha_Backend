@@ -9,11 +9,18 @@ import httpStatus from 'http-status-codes';
 const Create_Package_Service = async (gettedData: Create_Package_Type) => {
 
     const recentPackage = await Package_Model.find().sort({ createdAt: -1 });
+    let packageNumber: number = 0;
+
+    if (recentPackage.length == 0) {
+        packageNumber = 1
+    }
+    packageNumber = recentPackage[0].package_no + 1;
+
     const newPackage: Package_Type = {
         package_name: gettedData.package_name,
         package_price: gettedData.package_price,
         package_status: "ACTIVE",
-        package_no: recentPackage[0].package_no + 1
+        package_no: packageNumber
     }
     const result = await Package_Model.create(newPackage);
     return result;

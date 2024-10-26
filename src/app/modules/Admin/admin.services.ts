@@ -18,7 +18,6 @@ const Login_Admin_Service = async (data: Admin_Type) => {
 }
 
 
-
 export const Admin_Services = {
     Login_Admin_Service,
 
