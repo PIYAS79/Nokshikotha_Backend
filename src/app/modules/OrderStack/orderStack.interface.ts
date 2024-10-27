@@ -9,7 +9,7 @@ export interface OrderStack_Type {
     orderNote: string,
     packageNo: number[],
     totalPrice: number,
-    status: "PROCESSING" | "DELIVERED"
+    status: "PROCESSING" | "DELIVERED" | "CANCELLED"
 }
 
 
@@ -25,5 +25,5 @@ export interface Create_OrderStack_Type {
 }
 
 export interface Update_Order_Status_Type {
-    status:boolean
+    status: "PROCESSING" | "DELIVERED" | "CANCELLED"
 }

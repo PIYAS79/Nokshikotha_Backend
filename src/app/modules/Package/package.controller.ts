@@ -34,7 +34,19 @@ const Get_All_Package_Controller = Async_Catch(async (req: Request, res: Respons
 
     res.status(httpStatus.OK).json({
         success: true,
-        message: "Successfully Update A Package",
+        message: "Successfully Get All Packages",
+        data: result
+    })
+})
+
+// get one package controller 
+const Get_One_Package_Controller = Async_Catch(async (req: Request, res: Response, next: NextFunction) => {
+
+    const result = await Package_Sevices.Get_One_Package_Service(req.params.pid);
+
+    res.status(httpStatus.OK).json({
+        success: true,
+        message: "Successfully Get One Packages",
         data: result
     })
 })
@@ -56,5 +68,5 @@ export const Package_Controller = {
     Update_Package_Controller,
     Get_All_Package_Controller,
     Delete_Package_Controller,
-
+    Get_One_Package_Controller,
 }

@@ -53,10 +53,7 @@ const Update_Order_Status_Service = async (gettedData: Update_Order_Status_Type,
     if (!isOrderExist) {
         throw new Final_App_Error(httpStatus.NOT_FOUND, "Order not found *");
     }
-    if (!gettedData.status) {
-        throw new Final_App_Error(httpStatus.BAD_REQUEST, "Status must be true for change the status ");
-    }
-    const result = await OrderStack_Model.findByIdAndUpdate({ _id: oid }, { status: "DELIVERED" }, { new: true })
+    const result = await OrderStack_Model.findByIdAndUpdate({ _id: oid }, { status: gettedData.status }, { new: true })
     return result;
 }
 
@@ -72,5 +69,5 @@ export const OrderStack_Services = {
     Create_OrderStack_Service,
     Update_Order_Status_Service,
     Get_All_Order_Service,
-    
+
 }

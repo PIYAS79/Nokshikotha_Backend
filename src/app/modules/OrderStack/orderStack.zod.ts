@@ -13,8 +13,8 @@ export const Zod_Create_OrderStack_Type = z.object({
 })
 
 export const Zod_Update_OrderStatus_Type = z.object({
-    body:z.object({
-        status:z.boolean()
+    body: z.object({
+        status: z.enum(['PROCESSING', 'DELIVERED', 'CANCELLED'])
     })
 })
 

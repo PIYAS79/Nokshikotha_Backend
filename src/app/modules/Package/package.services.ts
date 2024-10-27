@@ -49,6 +49,17 @@ const Get_All_Package_Service = async () => {
 
 }
 
+// get one package service 
+const Get_One_Package_Service = async (pid: string) => {
+
+    const result = await Package_Model.findById({ _id: pid });
+    if (!result) {
+        throw new Final_App_Error(httpStatus.NOT_FOUND, "Package not found *");
+    }
+    return result;
+
+}
+
 // delete package service 
 const Delete_Package_Service = async (pid: string) => {
 
@@ -67,5 +78,5 @@ export const Package_Sevices = {
     Update_Package_Service,
     Get_All_Package_Service,
     Delete_Package_Service,
-
+    Get_One_Package_Service,
 }

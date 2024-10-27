@@ -38,12 +38,12 @@ const OrderStack_Schema = new Schema<OrderStack_Type>({
     status: {
         type: String,
         enum: {
-            values: ["DELIVERED", "PROCESSING"],
+            values: ["DELIVERED", "PROCESSING", "CANCELLED"],
             message: `{VALUE} is not assignable with values "PROCESSING" or "DELIVERED"`
         }
     }
-},{
-    timestamps:true
+}, {
+    timestamps: true
 })
 
-export const OrderStack_Model = model<OrderStack_Type>("OrderStack",OrderStack_Schema);
+export const OrderStack_Model = model<OrderStack_Type>("OrderStack", OrderStack_Schema);
