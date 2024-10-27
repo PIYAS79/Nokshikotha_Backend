@@ -13,6 +13,7 @@ const Login_Admin_Service = async (data: Admin_Type) => {
     if (result.password !== data.password) {
         throw new Final_App_Error(httpStatus.UNAUTHORIZED, "Password is not matched *");
     }
+    result.password='';
     return result;
 
 }
