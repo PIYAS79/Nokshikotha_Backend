@@ -4,6 +4,7 @@ import { Package_Router } from '../modules/Package/package.route';
 import { Banner_Routes } from '../modules/Banner/banner.route';
 import { Admin_Routes } from '../modules/Admin/admin.route';
 import { OrderStack_Routes } from '../modules/OrderStack/orderStack.route';
+import { Charge_Routes } from '../modules/Delivery Charge/charge.route';
 
 const router = express.Router();
 
@@ -24,6 +25,10 @@ const Project_Routes = [
     {
         path: '/order',
         route: OrderStack_Routes
+    },
+    {
+        path: '/charge',
+        route: Charge_Routes
     }
 ]
 

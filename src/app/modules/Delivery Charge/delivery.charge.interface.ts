@@ -1,7 +1,4 @@
 
-
-
-
 export type Delivery_Charge_Type = {
     charge: number
 }

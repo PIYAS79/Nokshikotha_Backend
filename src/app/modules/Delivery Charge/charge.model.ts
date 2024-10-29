@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { Delivery_Charge_Type } from "./Charge.interface";
+import { Delivery_Charge_Type } from "./delivery.charge.interface"
 
 
 
