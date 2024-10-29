@@ -10,7 +10,7 @@ const Create_Banner_Controller = Async_Catch(async (req: Request, res: Response,
     const result = await Banner_Services.Create_Banner_Service(req.body);
     res.status(httpStatus.OK).json({
         success: true,
-        message: "Successfully Create A Banner",
+        message: "Successfully Create Banner",
         data: result
     })
 
@@ -29,12 +29,24 @@ const Delete_Banner_Controller = Async_Catch(async (req: Request, res: Response,
 })
 
 // delete banner controller 
-const Get_All_Banner_Controller = Async_Catch(async (req: Request, res: Response, next: NextFunction) => {
+const Get_Banner_Controller = Async_Catch(async (req: Request, res: Response, next: NextFunction) => {
 
-    const result = await Banner_Services.Get_All_Banner_Service();
+    const result = await Banner_Services.Get_Banner_Service();
     res.status(httpStatus.OK).json({
         success: true,
-        message: "Successfully Find All Banner",
+        message: "Successfully Get Banner",
+        data: result
+    })
+
+})
+
+// delete banner controller 
+const Update_Banner_Controller = Async_Catch(async (req: Request, res: Response, next: NextFunction) => {
+
+    const result = await Banner_Services.Update_Banner_Service(req.body, req.params.bid);
+    res.status(httpStatus.OK).json({
+        success: true,
+        message: "Successfully Update Banners",
         data: result
     })
 
@@ -44,7 +56,6 @@ const Get_All_Banner_Controller = Async_Catch(async (req: Request, res: Response
 export const Banner_Controller = {
     Create_Banner_Controller,
     Delete_Banner_Controller,
-    Get_All_Banner_Controller,
-
-
+    Get_Banner_Controller,
+    Update_Banner_Controller
 }

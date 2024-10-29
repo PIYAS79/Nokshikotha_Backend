@@ -5,7 +5,7 @@ import { Banner_Type } from "./banner.interface";
 
 const Banner_Schema = new Schema<Banner_Type>({
     link: {
-        type: String,
+        type: [String],
         required: [true, "Link is required *"]
     }
 }, {
