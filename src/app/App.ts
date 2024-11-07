@@ -10,8 +10,8 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use(cors({
-    origin: [(config.client_url as string),],
-    credentials: true,
+    origin: [config.client_url as string,],
+    credentials: true, 
 }));
 
 // Project Routes
