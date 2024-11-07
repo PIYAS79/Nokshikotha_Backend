@@ -3,13 +3,16 @@ import cors from 'cors';
 import httpStatus from 'http-status-codes'
 import Global_Error_Handler from './errors/Global_Error_Handler';
 import { Project_Final_Routes } from './routes';
+import config from './config';
 
 const app = express();
 
 // middlewares
 app.use(express.json());
-app.use(cors())
-
+app.use(cors({
+    origin: [(config.client_url as string),],
+    credentials: true,
+}));
 
 // Project Routes
 app.use('/app/v1', Project_Final_Routes);
