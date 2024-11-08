@@ -10,7 +10,7 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use(cors({
-    origin: [config.client_url as string,],
+    origin: ["https://nakshidhara.netlify.app",],
     credentials: true, 
 }));
 
@@ -25,7 +25,6 @@ app.get('/', (req: Request, res: Response) => {
         message: "Nokshidhara backend is running 😍"
     })
 })
-
 
 // route not found error
 app.use("*", (req: Request, res: Response, next: NextFunction) => {
