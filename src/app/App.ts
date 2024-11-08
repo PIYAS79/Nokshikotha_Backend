@@ -10,7 +10,7 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use(cors({
-    origin: ["https://nakshidhara.netlify.app",],
+    origin: ["https://nakshidhara.netlify.app","http://localhost:5173"],
     credentials: true, 
 }));
 

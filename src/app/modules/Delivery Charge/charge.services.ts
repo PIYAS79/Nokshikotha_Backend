@@ -10,6 +10,7 @@ import httpStatus from 'http-status-codes';
 const Create_Charge_Service = async (gettedData: Delivery_Charge_Type) => {
 
     const result = await Delivery_Charge_Model.create(gettedData);
+    console.log(result);
     return result;
 }
 

@@ -1,5 +1,7 @@
 import Final_App_Error from "../../errors/Final_App_Error";
 import { formatDateAndTime } from "../../utils/date.formatter";
+import { Delivery_Charge_Model } from "../Delivery Charge/charge.model";
+import { Delivery_Charge_Type } from "../Delivery Charge/delivery.charge.interface";
 import { Package_Type } from "../Package/package.interface";
 import { Package_Model } from "../Package/package.model";
 import { Create_OrderStack_Type, OrderStack_Type, Update_Order_Status_Type } from "./orderStack.interface";
@@ -30,6 +32,8 @@ const Create_OrderStack_Service = async (gettedData: Create_OrderStack_Type) => 
         totalPackagePrice += isFound.package_price;
     }
 
+    const deliveryCharge = await Delivery_Charge_Model.find() as Delivery_Charge_Type[]
+
     const newOrder: OrderStack_Type = {
         orderNo: OrderNumber,
         address: gettedData.address,
@@ -39,7 +43,7 @@ const Create_OrderStack_Service = async (gettedData: Create_OrderStack_Type) => 
         packageNo: packageNumbers,
         phone: gettedData.phone,
         status: "PROCESSING",
-        totalPrice: totalPackagePrice
+        totalPrice: totalPackagePrice + deliveryCharge[0].charge
     }
 
     const result = await OrderStack_Model.create(newOrder);
