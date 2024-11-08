@@ -13,8 +13,9 @@ const Create_Package_Service = async (gettedData: Create_Package_Type) => {
 
     if (recentPackage.length == 0) {
         packageNumber = 1
+    }else{
+        packageNumber = recentPackage[0].package_no + 1;
     }
-    packageNumber = recentPackage[0].package_no + 1;
 
     const newPackage: Package_Type = {
         package_name: gettedData.package_name,
